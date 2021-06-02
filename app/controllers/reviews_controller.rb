@@ -28,4 +28,10 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def show
+        if @review.blank?
+            redirect_to reviews_path
+        end
+    end
+
 end
