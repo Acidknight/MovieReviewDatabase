@@ -21,6 +21,10 @@ class MoviesController < ApplicationController
         else 
             render :new
         end
+
+        def show
+            @movie = Movie.find_by_id(params[:id])
+        end
     end
 
 end
