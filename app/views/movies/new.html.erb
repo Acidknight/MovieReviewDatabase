@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+<h1>Add a new movie!</h1>
+
+<%= form_for(@movie) do |f| %>
+    <%= render partial: 'layouts/errors', locals: {object: @movie} %>
+    
+    <%= f.label :name %>
+    <%= f.text_field :title %>
+    <br>
+    <br>
+    <%= f.label :release_year %>
+    <%= f.text_field :release_year %>
+    <br>
+    <br>
+    <%= f.label :summary %>
+    <%= f.text_field :summary %>
+    <br>
+    <br>
+    <%= f.submit "Add Movie" %>
+<% end %>
