@@ -18,4 +18,14 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def create
+        @review = current_user.reviews.build(review_params)
+        @review.user = current_user
+        if @review.save
+            redirect_to reviews_path
+        else
+            render :new
+        end
+    end
+
 end
