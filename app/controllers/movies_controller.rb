@@ -21,30 +21,31 @@ class MoviesController < ApplicationController
         else 
             render :new
         end
+    end
 
-        def show
-            @movie = Movie.find_by_id(params[:id])
-        end
+    def show
+        @movie = Movie.find_by_id(params[:id])
+    end
 
-        def edit 
-            @movie = Movie.find(params[:id])
-        end
+    def edit 
+        @movie = Movie.find(params[:id])
+    end
 
-        def update
-            @movie = current_user.movies.find(params[:id])
-            if @movie.update(movies_params)
-                redirect_to movie_path(@movie)
-            else
-                @error = @movie.errors.full_messages
-                render :edit 
-            end
-        end
-
-        def destroy
-            @movie.destroy
-            redirect_to movies_path
+    def update
+        @movie = current_user.movies.find(params[:id])
+        if @movie.update(movies_params)
+            redirect_to movie_path(@movie)
+        else
+            @error = @movie.errors.full_messages
+            render :edit 
         end
     end
+
+    def destroy
+        @movie.destroy
+        redirect_to movies_path
+    end
+    
 
     private 
 

@@ -3,10 +3,10 @@ class Movie < ApplicationRecord
     has_many :users, through: :reviews
     validates :title, :release_year, :summary, presence: true
 
-    scope :alpha, -> { order('LOWER(name)') }
+    scope :alpha, -> { order('LOWER(title)') }
 
     def self.search(q)
-        InventoryList.where("name LIKE ?", "%#{q}%").alpha
+        InventoryList.where("title LIKE ?", "%#{q}%").alpha
     end
 
 
