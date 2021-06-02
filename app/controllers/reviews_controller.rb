@@ -10,4 +10,12 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def new
+        if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
+            @review = @movie.reviews.build
+        else
+            @review = Review.new
+        end
+    end
+
 end
