@@ -4,9 +4,9 @@ class MoviesController < ApplicationController
 
     def index
         if params[:q]
-            @inventory_lists = InventoryList.search(params[:q])
+            @movies = Movie.search(params[:q])
         else
-            @inventory_lists = InventoryList.alpha.all
+            @movies = Movie.alpha.all
         end
     end
 
