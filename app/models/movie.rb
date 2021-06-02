@@ -1,3 +1,4 @@
 class Movie < ApplicationRecord
 
+
 end
