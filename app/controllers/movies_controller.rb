@@ -39,6 +39,11 @@ class MoviesController < ApplicationController
                 render :edit 
             end
         end
+
+        def destroy
+            @movie.destroy
+            redirect_to movies_path
+        end
     end
 
 end
