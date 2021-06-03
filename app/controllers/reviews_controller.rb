@@ -3,10 +3,13 @@ class ReviewsController < ApplicationController
     before_action :current_user, only: [:edit, :update, :destroy]
 
     def index
-        if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
+        if params[:imovie_id] && @movie = Movie.find_by_id(params[:movie_id])
             @reviews = @movie.reviews
+        elsif current_user
+            @reviews = current_user.reviews.all
         else
-            @reviews = Review.order_by_date
+            @error = "Movie doesn't exist" if params[:movie_id]
+            @comments = Review.all
         end
     end
 
@@ -19,11 +22,12 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = current_user.reviews.build(review_params)
-        @review.user = current_user
+        @movie = Movie.find(params[:review][:movie_id])
+        @review = current_user.reviews.new(review_params)
         if @review.save
-            redirect_to reviews_path
+            redirect_to movie_reviews_path(@movie, @review)
         else
+            @error = @comment.errors.full_messages
             render :new
         end
     end

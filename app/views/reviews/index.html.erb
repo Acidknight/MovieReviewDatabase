@@ -6,6 +6,5 @@
 <ul>
 <% @reviews.each do |review| %>
     <li><%= link_to review.comment, review_path(review) %></li>
-    by <%= @review.user.username %></h4>
 <% end %>
 </ul>
