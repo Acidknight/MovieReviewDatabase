@@ -12,7 +12,7 @@
         <li><strong>Review on <%= link_to rev.movie.title, movie_path(rev.movie_id) %> </strong>: 
         <p>Posted: <%= rev.created_at.strftime('%B %d, %Y') %> </p> 
         <ul> 
-          <strong>Review title:</strong> <%= rev.title %>
+          <strong>Review title:</strong> <%= rev.movie.title %>
           <br>
           <%= rev.comment %> - <em><%= rev.user.username %></em></li>
         </ul>

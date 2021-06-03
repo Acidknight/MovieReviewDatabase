@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     before_action :current_user, only: [:edit, :update, :destroy]
 
     def index
-        if params[:imovie_id] && @movie = Movie.find_by_id(params[:movie_id])
+        if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
             @reviews = @movie.reviews
         elsif current_user
             @reviews = current_user.reviews.all
