@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_045955) do
+ActiveRecord::Schema.define(version: 2021_06_03_055749) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -50,4 +50,5 @@ ActiveRecord::Schema.define(version: 2021_06_03_045955) do
     t.string "provider"
   end
 
+  add_foreign_key "reviews", "movies", on_delete: :cascade
 end
