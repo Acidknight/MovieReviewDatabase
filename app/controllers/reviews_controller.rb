@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
         @movie = Movie.find(params[:review][:movie_id])
         @review = current_user.reviews.new(review_params)
         if @review.save
-            redirect_to movie_reviews_path(@movie, @review)
+            redirect_to movie_path(@movie)
         else
             @error = @comment.errors.full_messages
             render :new
