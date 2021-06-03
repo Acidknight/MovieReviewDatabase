@@ -4,7 +4,7 @@
 <h2>Your reviews</h2>
 
 <ul>
-<% @review_path.each do |review| %>
+<% @reviews.each do |review| %>
     <li><%= link_to review.content, review_path(review) %></li>
 <% end %>
 </ul>
