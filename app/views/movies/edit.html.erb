@@ -1,0 +1,25 @@
+
+<br>
+<br>
+<br>
+<h2>Edit Your Movie</h2>
+
+<%= form_for(@movie) do |f| %> 
+    <%= f.label :title, "Title: " %>
+    <%= f.text_field :title  %> 
+    <br>
+    <br>
+    <%= f.label :release_year, "Release Year: " %>
+    <%= f.text_field :release_year %>
+    <br>
+    <br>
+    <%= f.label :summary, "Summary: " %>
+    <%= f.text_field :summary %>
+    <br>
+    <br>
+    <%= f.label :genre, "Genre: " %>
+    <%= f.text_field :genre %>
+    <br>
+    <br>
+    <%= f.submit "Submit" %>
+<% end %>

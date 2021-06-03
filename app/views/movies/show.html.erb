@@ -13,6 +13,8 @@
 
 <p><%= link_to 'Edit Movie', edit_movie_path(@movie) %></p>
 
+<p class="button"><%= button_to 'Delete Movie', movie_path(@movie), method: 'delete' %></p>
+
 <hr>
     <p><%= button_to 'Previous', movies_path %></p>
     <p><%= button_to 'See reviews for this movie', movie_reviews_path(@movie) %></p>
