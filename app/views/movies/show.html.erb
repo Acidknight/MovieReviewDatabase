@@ -1,9 +1,25 @@
-<br>
-<br>
-<br>
-<h1>Title: <%= @movie.title %></h1>
-<h4>Release Year: <%=  @movie.release_year%></h4>
-<h4>Summary: <%=  @movie.summary%></h4>
-<br><br>
+<% if @movie.present? %>
+    <h1><%= @movie.title %></h1>
+ 
+    <h4>About this movie:</h4>
+    <ul>
+        <li>Title: <%= @movie.title %></li>
+        <li>Genre: <%= @movie.genre %></li>
+        <li>Release Year: <%= @movie.release_year %></li>
+        <li>Summary: <%= @movie.summary %></li>
+    </ul>
+
+    <hr>
 
 <p><%= link_to 'Edit Movie', edit_movie_path(@movie) %></p>
+
+<hr>
+    <p><%= button_to 'Previous', movies_path %></p>
+    <p><%= button_to 'See reviews for this movie', movie_reviews_path(@movie) %></p>
+    <p><%= button_to 'Add review for this movie', new_movie_review_path(@movie) %></p>
+<% else %>
+
+    <h1>Movie does not exist.</h1>
+    <p><%= button_to 'Previous', movies_path %></p>
+
+<% end %> 
