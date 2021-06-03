@@ -1,12 +1,12 @@
 <br>
 <br>
 <br>
-<h1>Leave a review for <%= @movie.name %> list</h1>
+<h1>Leave a review for <%= @review.movie.title %></h1>
 
 <%= form_for(@review) do |f| %>
     <%= render partial: 'layouts/errors', locals: {object: @review} %>
     
-    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <%= f.hidden_field :movie_id %>
     
     <%= f.label :comment, "Review" %>
     <%= f.text_field :comment, placeholder: "Tell us what you think." %>
