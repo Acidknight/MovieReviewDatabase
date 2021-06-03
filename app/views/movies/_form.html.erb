@@ -1,0 +1,39 @@
+<div class = "jumbotron jumbotron-fluid">
+
+    <div>
+        <%= form_for movie, :html => {:class => "form-horizontal center"} do |f| %>
+                <div class="container form-group">
+                    <%= f.label :title, :class => "control-label" %>
+                    <div>
+                        <%= f.text_field :title, :class => "form-control" %>
+                    </div>
+                </div>
+
+                <div class="container form-group">
+                    <%= f.label :release_year, "Release Year", :class => "control-label"%>
+                    <div>
+                        <%= f.number_field :release_year, :class => "form-control" %>
+                    </div>
+                </div>
+
+                <div class="container form-group">
+                <%= f.label :genre, :class => "control-label"%>
+                    <div>
+                        <%= f.text_field :genre, :class => "form-control" %>
+                    </div>
+                </div>
+
+                <div class="container form-group">
+                    <%= f.label :summary, :class => "control-label" %>
+                    <div>
+                        <%= f.text_field :summary, :class => "form-control" %>
+                    </div>
+                </div>
+
+
+                <div class = "container text-center">
+                    <%= f.submit "Submit", class: "btn btn-lg btn-dark btn-block" %>            
+                </div>
+        <% end %>
+    </div>
+</div>

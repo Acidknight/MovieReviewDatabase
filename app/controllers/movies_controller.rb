@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
 
     before_action :redirect_if_not_logged_in
+    before_action :current_user, only: [:edit, :update, :destroy]
+    before_action :set_movie, except: [:index, :new, :create]
 
     def index
         if params[:q]
@@ -28,7 +30,7 @@ class MoviesController < ApplicationController
     end
 
     def edit 
-        @movie = Movie.find(params[:id])
+        
     end
 
     def update
@@ -50,6 +52,11 @@ class MoviesController < ApplicationController
     
 
     private 
+
+    private
+    def set_movie
+        @movie = Movie.find_by_id(params[:id])
+    end
 
     def movies_params
         params.require(:movie).permit(:title, :release_year, :summary, :genre)
