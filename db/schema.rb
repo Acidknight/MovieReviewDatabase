@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_025906) do
+ActiveRecord::Schema.define(version: 2021_06_03_011407) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_025906) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "genre_id"
+    t.string "genre"
   end
 
   create_table "reviews", force: :cascade do |t|
