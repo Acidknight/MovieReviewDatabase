@@ -6,7 +6,7 @@ class Movie < ApplicationRecord
     scope :alpha, -> { order('LOWER(title)') }
 
     def self.search(q)
-        InventoryList.where("title LIKE ?", "%#{q}%").alpha
+        Movie.where("title LIKE ?", "%#{q}%").alpha
     end
 
 

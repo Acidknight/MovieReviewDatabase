@@ -1,24 +1,25 @@
-<div class = "container">
-
-    <h1>All Movies</h1>
-    <hr class="my-4">
-
-    <!---search--->
-    <%= form_tag(movies_path, method: 'get') do %>
-        <div>
-            <%= text_field_tag :term, nil, id: "Search"%>
-            <%= submit_tag "Search" %>
-        </div>
-    <% end %>
-
-    <br>
-    <br>
-
-    <% @movies.each do |movie| %>
-            <div>
-                <%= link_to movie.title, movie_path(movie) %> - <%= movie.release_year %>
-            </div>
-            <br>
-    <% end %>
-
+<br>
+<br>
+<br>
+<div>
+  <h4>Search for a Movie: </h4>
+  <%= form_tag(movies_path, method: 'get') do %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("search") %>
+  <% end %>
 </div>
+
+
+<div>
+    <ul>
+      <% @movies.each do |movie| %>
+        <h2>Name: <%= link_to movie.title, movie_path(movie) %></h2>
+        Release Year:<%= movie.release_year %> 
+        <br>
+        Summary:<%= movie.summary %> 
+        <br>
+        Genre:<%= movie.genre %> 
+        <br>
+      <% end %>
+    </ul> 
+</div> 
