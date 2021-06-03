@@ -1,26 +1,25 @@
-<% if @movie.present? %>
-    <h1><%= @movie.title %></h1>
- 
-    <h4>About this movie:</h4>
+<br>
+<br>
+<br>
+<h1>Title: <%= @movie.title %></h1>
+<h4>Release Year: <%= @movie.release_year%></h4>
+<h4>Genre: <%=  @movie.genre%></h4>
+<h4>Summary: <%=  @movie.summary%></h4>
+<br><br>
+
+<%= form_for(@movie) do |f| %>
+    
+        <p class="button"><%= link_to 'Edit Movie', edit_movie_path(@movie) %></p>
+    
+    
+        <p class="button"><%= button_to 'Delete Movie', movie_path(@movie), method: 'delete' %></p>
+    
+<% end %>
+<%= link_to "Add a review", new_movie_review_path(@movie)  %>
+<br><br>
+<h4><strong>Comments: </strong></h4>
+<% @movie.reviews.each do |review| %>
     <ul>
-        <li>Release Year: <%= @movie.release_year %></li>
-        <li>Genre: <%= @movie.genre %></li>
-        <li>Summary: <%= @movie.summary %></li>
+        <li><strong><%= review.user.username %></strong> says "<%= review.comment %>"</li>
     </ul>
-
-    <hr>
-
-    <p><%= link_to 'Edit Movie', edit_movie_path(@movie) %></p>
-
-    <p class="button"><%= button_to 'Delete', movie_path(@movie), method: 'delete' %></p>
-
-    <hr>
-    <p><%= link_to 'Go back', movies_path %></p>
-    <p><%= link_to 'See reviews for this movie', movie_reviews_path(@movie) %></p>
-    <p><%= link_to 'Add review for this movie', new_movie_review_path(@movie) %></p>
-<% else %>
-
-    <h1>Movie does not exist.</h1>
-    <p><%= link_to 'Go back', movies_path %></p>
-
-<% end %>  
+<% end %>
