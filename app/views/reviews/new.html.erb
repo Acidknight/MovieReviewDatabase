@@ -1,0 +1,16 @@
+<br>
+<br>
+<br>
+<h1>Leave a review for <%= @movie.name %> list</h1>
+
+<%= form_for(@review) do |f| %>
+    <%= render partial: 'layouts/errors', locals: {object: @review} %>
+    
+    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    
+    <%= f.label :comment, "Review" %>
+    <%= f.text_field :comment, placeholder: "Tell us what you think." %>
+    <br>
+    <br>
+    <%= f.submit "Submit" %>
+<% end %>
