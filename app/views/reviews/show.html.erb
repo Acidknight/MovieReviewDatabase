@@ -1,0 +1,12 @@
+<br>
+<br>
+<br>
+<h2>Your review</h2>
+<br>
+<h4>"<%= @review.comment %>"  by <%= @review.user.username %></h4>
+<br>
+
+
+<% if @review.user == current_user %>
+  <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+<% end %>
