@@ -14,9 +14,9 @@
     <br>
     <br>
 
-    <% @movies.each do |m| %>
+    <% @movies.each do |movie| %>
             <div>
-                <%= link_to m.title, movie_path(m) %> - <%= m.release_year %>
+                <%= link_to movie.title, movie_path(movie) %> - <%= movie.release_year %>
             </div>
             <br>
     <% end %>
