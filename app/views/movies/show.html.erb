@@ -20,6 +20,6 @@
 <h4><strong>Reviews: </strong></h4>
 <% @movie.reviews.each do |review| %>
     <ul>
-        <li><strong><%= review.user.username %></strong> says "<%= review.comment %>"</li>
+        <li><strong><%= review.user.username %></strong> says <%= link_to review.title, review_path %></li>
     </ul>
 <% end %>
