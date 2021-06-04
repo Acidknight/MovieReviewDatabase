@@ -5,13 +5,15 @@
 
 <%= form_for(@review) do |f| %> 
      
-    <%= f.label :comment, "Comment: " %>
-    <%= f.text_field :comment, placeholder: "Update your review" %>
+    <%= f.label :title, "Title: " %>
+    <%= f.text_field :title, placeholder: "Update your review title" %>
     <br>
     <br>
+    <%= f.label :comment, "Review: " %>
+    <%= f.text_area :comment, placeholder: "Update your review" %>
     <%= f.submit "Submit" %>
 <% end %>
 
 <p class="button"><%= button_to 'Delete Comment', review_path(@review), method: 'delete' %></p>
 
-<p><%= button_to 'Return to the homepage', root_path, method: 'get' %></p>
+<p><%= button_to 'Return to the review', review_path, method: 'get' %></p>
