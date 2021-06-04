@@ -7,6 +7,9 @@
     <%= render partial: 'layouts/errors', locals: {object: @review} %>
     
     <%= f.hidden_field :movie_id %>
+
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, placeholder: "Title." %>
     
     <%= f.label :comment, "Review" %>
     <%= f.text_field :comment, placeholder: "Tell us what you think." %>
