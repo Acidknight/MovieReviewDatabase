@@ -39,20 +39,29 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-
+        @review = Review.find(params[:id])
     end
 
     def update
+        @review = current_user.reviews.find(params[:id])
+     
         if @review.update(review_params)
             redirect_to review_path(@review)
         else
+            @error = @review.errors.full_messages
             render :edit
         end
     end
 
     def destroy
-        @review.delete
-        redirect_to reviews_path
+        @review = current_user.reviews.find(params[:id])
+        if @review.destroy
+            flash[:success] = "Your comment was successfully deleted."
+            redirect_to movies_path
+        else
+            @error = @review.errors.full_messages
+            render :edit
+        end
     end
 
     private 

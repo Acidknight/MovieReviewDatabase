@@ -17,7 +17,7 @@
 <% end %>
 <%= link_to "Add a review", new_movie_review_path(@movie)  %>
 <br><br>
-<h4><strong>Comments: </strong></h4>
+<h4><strong>Reviews: </strong></h4>
 <% @movie.reviews.each do |review| %>
     <ul>
         <li><strong><%= review.user.username %></strong> says "<%= review.comment %>"</li>

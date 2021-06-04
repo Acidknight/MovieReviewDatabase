@@ -6,6 +6,6 @@
 
 <ul>
 <% @reviews.each do |review| %>
-    <li><%= link_to review.comment, review_path(review) %></li>
+    <li><%= link_to review.comment, edit_review_path(review) %></li>
 <% end %>
 </ul>
