@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
         if @review.save
             redirect_to movie_path(@movie)
         else
-            @error = @comment.errors.full_messages
+            @error = @review.errors.full_messages
             render :new
         end
     end

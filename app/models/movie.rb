@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
     has_many :reviews
     has_many :users, through: :reviews
-    validates :title, :release_year, :summary, presence: true
+    validates :title, :release_year, :summary, :genre, presence: true
 
     scope :alpha, -> { order('LOWER(title)') }
 
