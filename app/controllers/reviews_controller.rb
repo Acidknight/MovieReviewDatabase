@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :current_user, only: [:edit, :update, :destroy]
+    before_action :find_review, except: [:index, :new, :create]
 
     def index
         if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
@@ -54,17 +55,21 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        @review = current_user.reviews.find(params[:id])
-        if @review.destroy
-            flash[:success] = "Your comment was successfully deleted."
-            redirect_to movies_path
+        if current_user.id == @review.user_id
+            @review.find(params[:id]).destroy
+            flash[:success] = "Your review was successfully deleted."
+            redirect_to movie_path
         else
             @error = @review.errors.full_messages
-            render :edit
+            render :index
         end
     end
 
     private 
+
+    def set_review
+        @review = Review.find_by_id(params[:id])
+    end
 
     def review_params
         params.require(:review).permit(:title, :comment, :movie_id, :user_id)
