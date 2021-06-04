@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :current_user, only: [:edit, :update, :destroy]
-    before_action :find_review, except: [:index, :new, :create]
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def index
         if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
@@ -55,17 +55,21 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        if current_user.id == @review.user_id
-            @review.find(params[:id]).destroy
-            flash[:success] = "Your review was successfully deleted."
-            redirect_to movie_path
-        else
-            @error = @review.errors.full_messages
-            render :index
+        @review = current_user.reviews.find(params[:id])
+            if @review.find(params[:id]).destroy
+                flash[:success] = "Your review was successfully deleted."
+                redirect_to movie_path
+            else
+              @error = @review.errors.full_messages
+              render :index
         end
     end
 
     private 
+
+    def record_not_found
+        redirect_to movie_path
+      end
 
     def set_review
         @review = Review.find_by_id(params[:id])
