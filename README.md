@@ -1,26 +1,15 @@
-# README
+Welcome to the Movie Review Database!
 
+This app is used to post movies, and allow users to review and discuss them.
 
-Test
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Instructions:
 
-Things you may want to cover:
+bundle install
 
-* Ruby version
+rails db:migrate
 
-* System dependencies
+rails s
 
-* Configuration
+navigate to localhost:3000
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is available as open source under the terms of the MIT License.
