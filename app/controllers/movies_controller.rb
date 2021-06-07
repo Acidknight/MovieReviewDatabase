@@ -48,6 +48,7 @@ class MoviesController < ApplicationController
             @movie.destroy
         end
         redirect_to movies_path
+        flash[:error] = "Movies with reviews cannot be deleted."
     end
     
 

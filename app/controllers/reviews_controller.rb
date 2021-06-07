@@ -56,9 +56,9 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review = current_user.reviews.find(params[:id])
-            if @review.find(params[:id]).destroy
+            if @review.destroy
                 flash[:success] = "Your review was successfully deleted."
-                redirect_to movie_path
+                redirect_to movies_path
             else
               @error = @review.errors.full_messages
               render :index
